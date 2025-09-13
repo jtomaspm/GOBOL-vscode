@@ -15,14 +15,22 @@ export function activate(context: ExtensionContext) {
   const serverExecutable = path.join(os.homedir(), ".local","bin","GOBOL-LSP")
   const serverArgs = [
     "-log_path",
-    path.join(os.homedir(), ".local","share","logs", "gobol-lsp.log"),
+    path.join(os.homedir(), ".var", "log", "gobol-lsp.log"),
     "-interface",
     "stdio"
   ];
 
   const serverOptions: ServerOptions = {
-    run: { command: serverExecutable, args: serverArgs, transport: TransportKind.stdio, options: {env: process.env} },
-    debug: { command: serverExecutable, args: serverArgs, transport: TransportKind.stdio, options: {env: process.env} },
+    run: {
+      command: serverExecutable,
+      args: serverArgs,
+      options: { env: process.env },
+    },
+    debug: {
+      command: serverExecutable,
+      args: serverArgs,
+      options: { env: process.env },
+    },
   };
 
   const clientOptions: LanguageClientOptions = {
