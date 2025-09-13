@@ -11,38 +11,27 @@ import {
 let client: LanguageClient;
 
 export function activate(context: ExtensionContext) {
-  // The server is implemented in node
   const serverModule = path.join("server", "GOBOL-LSP");
 
-  // If the extension is launched in debug mode then the debug server options are used
-  // Otherwise the run options are used
   const serverOptions: ServerOptions = {
     run: { command: serverModule, transport: TransportKind.stdio },
-    debug: {
-      command: serverModule,
-      transport: TransportKind.stdio,
-    },
+    debug: { command: serverModule, transport: TransportKind.stdio },
   };
 
-  // Options to control the language client
   const clientOptions: LanguageClientOptions = {
-    // Register the server for all documents by default
     documentSelector: [{ scheme: "file", language: "cobol" }],
     synchronize: {
-      // Notify the server about file changes to '.clientrc files contained in the workspace
       fileEvents: workspace.createFileSystemWatcher("**/.PCOD"),
     },
   };
 
-  // Create the language client and start the client.
   client = new LanguageClient(
-    "GOBOL-vscode",
-    "GOBOL Language Server",
+    "gobol-client",
+    "GOBOL-Client",
     serverOptions,
     clientOptions
   );
 
-  // Start the client. This will also launch the server
   client.start();
 }
 

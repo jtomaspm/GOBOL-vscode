@@ -2,6 +2,7 @@
   "name": "gobol-client",
   "description": "GOBOL Language Server Client",
   "author": "João Machado",
+  "publisher": "popandboom",
   "license": "MIT",
   "version": "0.0.1",
   "repository": {

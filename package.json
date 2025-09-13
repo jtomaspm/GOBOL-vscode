@@ -1,25 +1,32 @@
 {
   "name": "gobol",
-  "description": "GOLBOL Language Server extention for vscode",
+  "description": "GOBOL Language Server extention for vscode",
   "author": "João Machado",
+  "publisher": "popandboom",
   "license": "MIT",
   "version": "1.0.0",
   "categories": [],
   "engines": {
     "vscode": "^1.75.0"
   },
-  "activationEvents": [
-    "onLanguage"
-  ],
+  "activationEvents": [ "onLanguage:cobol" ],
   "main": "./client/out/extension",
   "contributes": {
-    "configuration": {}
+    "languages": [
+      {
+        "id": "cobol",
+        "aliases": ["COBOL", "cobol"],
+        "extensions": [".cbl", ".cob", ".pcod", ".PCOD"]
+      }
+    ]
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
-    "compile": "tsc -b",
-    "watch": "tsc -b -w",
-    "postinstall": "cd client && npm install && cd .."
+    "compile": "tsc -p ./client/tsconfig.json",
+    "watch": "tsc -p ./client/tsconfig.json -w",
+    "postinstall": "cd client && npm install && cd .. && npm run install_server",
+    "clone_server": "rm -rf server && git clone https://github.com/jtomaspm/GOBOL-LSP server && rm -rf server/.git",
+    "install_server": "cd server && go build -o GOBOL-LSP ./cmd/lsp/main.go && cd .."
   },
   "devDependencies": {
     "@types/node": "^20.5.7",
