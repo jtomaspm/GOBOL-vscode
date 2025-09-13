@@ -10,7 +10,11 @@
     "vscode": "^1.75.0"
   },
   "activationEvents": [ "onLanguage:cobol" ],
-  "main": "./client/out/extension",
+  "main": "./client/out/extension.js",
+  "files": [
+    "client/out",
+    "server/GOBOL-LSP"
+  ],
   "contributes": {
     "languages": [
       {
@@ -26,7 +30,7 @@
     "watch": "tsc -p ./client/tsconfig.json -w",
     "postinstall": "cd client && npm install && cd .. && npm run install_server",
     "clone_server": "rm -rf server && git clone https://github.com/jtomaspm/GOBOL-LSP server && rm -rf server/.git",
-    "install_server": "cd server && go build -o GOBOL-LSP ./cmd/lsp/main.go && cd .."
+    "install_server": "npm run clone_server && cd server && go build -o GOBOL-LSP ./cmd/lsp/main.go && cd .."
   },
   "devDependencies": {
     "@types/node": "^20.5.7",
