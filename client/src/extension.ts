@@ -12,11 +12,17 @@ import {
 let client: LanguageClient;
 
 export function activate(context: ExtensionContext) {
-  const serverModule = path.join(os.homedir(), ".local","bin","GOBOL-LSP") + " -log_path " + path.join(os.homedir(), ".local","share","logs", "gobol-lsp.log") + " -interface stdio";
+  const serverExecutable = path.join(os.homedir(), ".local","bin","GOBOL-LSP")
+  const serverArgs = [
+    "-log_path",
+    path.join(os.homedir(), ".local","share","logs", "gobol-lsp.log"),
+    "-interface",
+    "stdio"
+  ];
 
   const serverOptions: ServerOptions = {
-    run: { command: serverModule, transport: TransportKind.stdio, options: {env: process.env} },
-    debug: { command: serverModule, transport: TransportKind.stdio, options: {env: process.env} },
+    run: { command: serverExecutable, args: serverArgs, transport: TransportKind.stdio, options: {env: process.env} },
+    debug: { command: serverExecutable, args: serverArgs, transport: TransportKind.stdio, options: {env: process.env} },
   };
 
   const clientOptions: LanguageClientOptions = {
