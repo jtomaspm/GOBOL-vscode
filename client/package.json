@@ -1,13 +1,12 @@
 {
-  "name": "REPLACE_ME",
-  "description": "REPLACE_ME",
-  "author": "REPLACE_ME",
+  "name": "gobol-client",
+  "description": "GOBOL Language Server Client",
+  "author": "João Machado",
   "license": "MIT",
   "version": "0.0.1",
-  "publisher": "REPLACE_ME",
   "repository": {
     "type": "git",
-    "url": "REPLACE_ME"
+    "url": "https://github.com/jtomaspm/GOBOL-vscode"
   },
   "engines": {
     "vscode": "^1.75.0"

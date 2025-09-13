@@ -1,10 +1,9 @@
 {
-  "name": "REPLACE_ME",
-  "description": "REPLACE_ME",
-  "author": "REPLACE_ME",
+  "name": "gobol",
+  "description": "GOLBOL Language Server extention for vscode",
+  "author": "João Machado",
   "license": "MIT",
   "version": "1.0.0",
-  "publisher": "REPLACE_ME",
   "categories": [],
   "engines": {
     "vscode": "^1.75.0"
