@@ -12,8 +12,7 @@
   "activationEvents": [ "onLanguage:cobol" ],
   "main": "./client/out/extension.js",
   "files": [
-    "client/out",
-    "server/GOBOL-LSP"
+    "client/out"
   ],
   "contributes": {
     "languages": [
@@ -29,10 +28,8 @@
     "compile": "tsc -p ./client/tsconfig.json",
     "watch": "tsc -p ./client/tsconfig.json -w",
     "postinstall": "cd client && npm install && cd .. && npm run setup_server",
-    "clone_server": "rm -rf server && git clone https://github.com/jtomaspm/GOBOL-LSP server_build",
-    "build_server": "cd server_build && go build -o GOBOL-LSP ./cmd/lsp/main.go && cd ..",
-    "install_server" : "mkdir server && mv server_build/GOBOL-LSP server/GOBOL-LSP && rm -rf server_build && chmod +x server/GOBOL-LSP",
-    "setup_server": "npm run clone_server && npm run build_server && npm run install_server"
+    "setup_server": "curl -fsS https://raw.githubusercontent.com/jtomaspm/GOBOL-LSP/refs/heads/main/scripts/install.sh | sh",
+    "dev": "npm run compile && npm run postinstall && npm run watch"
   },
   "devDependencies": {
     "@types/node": "^24.0.0",
