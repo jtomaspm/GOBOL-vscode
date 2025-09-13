@@ -11,8 +11,13 @@ import {
 let client: LanguageClient;
 
 export function activate(context: ExtensionContext) {
-  const serverModule = path.join("server", "GOBOL-LSP");
-
+  const serverModule = context.asAbsolutePath(
+    path.join(
+      "server",
+      process.platform === "win32" ? "GOBOL-LSP.exe" : "GOBOL-LSP"
+    )
+  );
+  console.log("Launching server from:", serverModule);
   const serverOptions: ServerOptions = {
     run: { command: serverModule, transport: TransportKind.stdio },
     debug: { command: serverModule, transport: TransportKind.stdio },
