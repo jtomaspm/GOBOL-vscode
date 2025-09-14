@@ -32,7 +32,7 @@
     "dev": "npm run compile && npm run postinstall && npm run watch"
   },
   "devDependencies": {
-    "@types/node": "^24.0.0",
+    "@types/node": "^20.5.7",
     "typescript": "^5.2.2"
   }
 }
